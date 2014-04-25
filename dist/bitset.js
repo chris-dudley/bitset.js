@@ -333,7 +333,7 @@ BitSet.prototype.toBinaryString = function() {
 
     if( wl > 0 ) {
         var bin = [];
-        for( var pos = 0; pos < wl; pos++ ) {
+        for( var pos = wl - 1; pos >= 0; pos-- ) {
             bin.push(lpad(this.store[pos].toString(2), '0', this.bitsPerWord));
         }
 
@@ -361,7 +361,7 @@ BitSet.prototype.toHexString = function() {
 
     if( wl > 0 ) {
         var hex = [];
-        for( var pos = 0; pos < wl; pos++ ) {
+        for( var pos = wl - 1; pos >= 0; pos-- ) {
             hex.push(lpad(this.store[pos].toString(16), '0', hexWordLength));
         }
 
@@ -423,7 +423,7 @@ BitSet.fromBinaryString = function(names, str) {
     var nParts = str.length / 32;
     var init = [];
 
-    for( var i = 0; i < nParts; i++ ) {
+    for( var i = nParts - 1; i >= 0; i-- ) {
         var part = str.slice(32 * i, 32 * (i+1));
 
         init.push(parseInt(part, 2));
@@ -459,7 +459,7 @@ BitSet.fromHexString = function(names, str) {
     var nParts = str.length / 8;
     var init = [];
 
-    for( var i = 0; i < nParts; i++ ) {
+    for( var i = nParts - 1; i >= 0; i-- ) {
         var part = str.slice(8 * i, 8 * (i+1));
 
         init.push(parseInt(part, 16));
