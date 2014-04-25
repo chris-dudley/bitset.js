@@ -275,6 +275,19 @@ BitSet.prototype.clone = function() {
 };
 
 /**
+ *  Make this BitSet a copy of the argument BitSet.
+ *
+ *  @param {BitSet} bitset - The bitset to copy.
+ *  @returns {BitSet} this
+ */
+BitSet.prototype.copy = function(bitset) {
+    this.store = bitset.store.concat();
+    this.names = bitset.names;
+
+    return this;
+};
+
+/**
  *  Returns a string representation of the bitset. For every bit set to true,
  *  it will include a decimal representation of the index.
  *
