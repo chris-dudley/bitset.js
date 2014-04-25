@@ -403,6 +403,15 @@ BitSet.fromString = function(names, str) {
  *  @param {String} str - The string to parse.
  */
 BitSet.fromBinaryString = function(names, str) {
+    if( str[0] == '0' && str[1] == 'x' ) {
+        throw new Error('Attempted to decode hex string as binary string');
+    }
+
+    // Remove 0b prefix if present
+    if( str[0] == '0' && str[1] == 'b' ) {
+        str = str.slice(2);
+    }
+
     if( (str.length % 32) !== 0 ) {
         var nPad = 32 - (str.length % 32);
         while( nPad > 0 ) {
@@ -430,6 +439,15 @@ BitSet.fromBinaryString = function(names, str) {
  *  @param {String} str - The string to parse.
  */
 BitSet.fromHexString = function(names, str) {
+    if( str[0] == '0' && str[1] == 'b' ) {
+        throw new Error('Attempted to decode binary string as hex string');
+    }
+
+    // Remove 0x prefix if present
+    if( str[0] == '0' && str[1] == 'x' ) {
+        str = str.slice(2);
+    }
+
     if( (str.length % 8) !== 0 ) {
         var nPad = 8 - (str.length % 8);
         while( nPad > 0 ) {
