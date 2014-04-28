@@ -278,6 +278,28 @@ BitSet.prototype.xor = function(set) {
 };
 
 /**
+ *  Determines whether or not the given BitSet intersects with the current
+ *  BitSet.
+ *
+ *  @param {BitSet} set - The BitSet with which to check intersection.
+ *  @returns {boolean} True if the sets have at least one bit in common.
+ */
+BitSet.prototype.intersects = function(set) {
+    if( this === set ) {
+        return true;
+    }
+
+    var wCommon = Math.min(this.wordLength(), set.wordLength());
+    var ret = false;
+
+    for( var pos = 0; pos < wCommon; pos++ ) {
+        ret = ret || ((this.store[pos] & set.store[pos]) > 0);
+    }
+
+    return ret;
+};
+
+/**
  *  Create a copy of this BitSet.
  *
  *  @return {BitSet}
