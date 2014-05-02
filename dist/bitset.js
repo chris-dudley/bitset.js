@@ -300,6 +300,23 @@ BitSet.prototype.intersects = function(set) {
 };
 
 /**
+ *  Determines whether or not the given BitSet is empty (has no bits set).
+ *
+ *  @returns {boolean} true if the BitSet has no bits set.
+ */
+BitSet.prototype.empty = function() {
+    ret = true;
+    var i = 0;
+
+    while( ret && i < this.store.length ) {
+        ret = ret && (this.store[i] === 0);
+        i++;
+    }
+
+    return ret;
+};
+
+/**
  *  Create a copy of this BitSet.
  *
  *  @return {BitSet}
