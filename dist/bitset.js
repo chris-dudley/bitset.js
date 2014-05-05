@@ -332,6 +332,16 @@ BitSet.prototype.empty = function() {
 };
 
 /**
+ *  Clears all bits in the BitSet.
+ *
+ *  @returns {BitSet} this
+ */
+BitSet.prototype.reset = function() {
+    this.store = [];
+    return this;
+};
+
+/**
  *  Determines whether or not the BitSet exactly equals another BitSet.
  *
  *  @param {BitSet} set - The comparison BitSet.
