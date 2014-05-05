@@ -332,6 +332,30 @@ BitSet.prototype.empty = function() {
 };
 
 /**
+ *  Determines whether or not the BitSet exactly equals another BitSet.
+ *
+ *  @param {BitSet} set - The comparison BitSet.
+ *  @returns {boolean} True if the two sets are equal.
+ */
+BitSet.prototype.equals = function(set) {
+    var pos;
+    var m_wl = this.wordLength();
+    var o_wl = set.wordLength();
+
+    if( m_wl != o_wl ) {
+        return false;
+    }
+
+    for( pos = 0; pos < m_wl; pos++ ) {
+        if( this.store[pos] != set.store[pos] ) {
+            return false;
+        }
+    }
+
+    return true;
+};
+
+/**
  *  Create a copy of this BitSet.
  *
  *  @return {BitSet}
