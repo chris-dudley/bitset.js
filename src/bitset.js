@@ -125,6 +125,21 @@ BitSet.prototype.get = function(pos) {
 };
 
 /**
+ *  Toggles the bit at the given position.
+ *
+ *  @param {number|String} pos - The bit position or name.
+ *  @returns {BitSet} this
+ */
+BitSet.prototype.toggle = function(pos) {
+    if( typeof pos === 'string' ) {
+        pos = this.bitIndex(pos);
+    }
+
+    this.store[this.wordIndex(pos)] ^= (1 << (pos & this.addressMask));
+    return this;
+};
+
+/**
  *  Returns the number of words in use for this BitSet.
  *
  *  @returns {number} The number of words in used for this BitSet.
