@@ -1,9 +1,9 @@
 {
-  "name": "bitset.js",
-  "version": "0.0.1",
+  "name": "bitset-js",
+  "version": "0.1.0",
   "author": "Christopher Dudley <chris@terainsights.com>",
   "description": "A bitset implementation in javascript",
-  "main": "dist/bitset.js",
+  "main": "dist/bitset.min.js",
   "devDependencies": {
     "grunt-contrib-clean": "~0.5.0",
     "grunt": "~0.4.4",
