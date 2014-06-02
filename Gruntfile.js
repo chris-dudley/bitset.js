@@ -46,11 +46,26 @@ module.exports = function(grunt) {
         },
         clean: {
             javascript: {
-                src: [ 'dist/bitset.js', 'dist/bitset.min.(js|map)' ]
+                src: [ 'dist/bitset.js', 'dist/bitset.min.{js,map}' ]
+            }
+        },
+        mochaTest: {
+            all: {
+                src: [ 'test/**/*.js' ],
+                options: {
+                    ignoreLeaks: false,
+                    ui: 'bdd',
+                    reporter: 'dot',
+                    require: [
+                        'should'
+                    ],
+                    timeout: 1000
+                }
             }
         }
     });
 
     grunt.registerTask('build', [ 'jshint:all', 'concat:source', 'umd:all', 'uglify:source' ]);
+    grunt.registerTask('test', ['mochaTest']);
     grunt.registerTask('default', ['build']);
 };

@@ -102,9 +102,14 @@ BitSet.prototype.wordIndex = function(pos) {
  *  Sets the bit at the given position.
  *
  *  @param {number|String} pos - The bit position or name.
+ *  @param {boolean=} value - The value to set the bit to (default is true)
  *  @returns {BitSet} this
  */
-BitSet.prototype.set = function(pos) {
+BitSet.prototype.set = function(pos, value) {
+    if( value === false ) {
+        return this.clear(pos);
+    }
+
     if( typeof pos === 'string' ) {
         pos = this.bitIndex(pos);
     }
@@ -156,6 +161,8 @@ BitSet.prototype.toggle = function(pos) {
     return this;
 };
 
+BitSet.prototype.flip = BitSet.prototype.toggle;
+
 /**
  *  Returns the number of words in use for this BitSet.
  *
@@ -163,7 +170,7 @@ BitSet.prototype.toggle = function(pos) {
  */
 BitSet.prototype.wordLength = function() {
     var length = this.store.length;
-    for( var pos = length - 1; pos >= 0; pos++ ) {
+    for( var pos = length - 1; pos >= 0; pos-- ) {
         if( this.store[pos] === 0 ) {
             length--;
         } else {

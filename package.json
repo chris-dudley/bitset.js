@@ -11,6 +11,17 @@
     "grunt-contrib-uglify": "~0.4.0",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-concat": "~0.4.0",
-    "grunt-umd": "~1.7.3"
+    "grunt-umd": "~1.7.3",
+    "mocha": "~1.19.0",
+    "grunt-simple-mocha": "~0.4.0",
+    "should": "~3.3.1",
+    "grunt-mocha-test": "~0.10.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:AntipodeBomb/bitset.js.git"
+  },
+  "scripts": {
+    "test": "grunt test"
   }
 }
