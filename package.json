@@ -1,6 +1,6 @@
 {
   "name": "bitset-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Christopher Dudley <chris@terainsights.com>",
   "description": "A bitset implementation in javascript",
   "main": "dist/bitset.min.js",
