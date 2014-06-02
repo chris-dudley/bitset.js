@@ -51,22 +51,42 @@ function BitSet(names, init) {
 /**
  *  The number of bits in each word of storage.
  */
-BitSet.prototype.bitsPerWord = 32;
+Object.defineProperty(BitSet.prototype, 'bitsPerWord', {
+    configurable: false,
+    enumerable: false,
+    value: 32,
+    writable: false
+});
 
 /**
  *  The number of bits used to address a bit within each word.
  */
-BitSet.prototype.addressBitsPerWord = 5;
+Object.defineProperty(BitSet.prototype, 'addressBitsPerWord', {
+    configurable: false,
+    enumerable: false,
+    value: 5,
+    writable: false
+});
 
 /**
  *  Bitmask for the overall word.
  */
-BitSet.prototype.wordMask = 0xFFFFFFFF;
+Object.defineProperty(BitSet.prototype, 'wordMask', {
+    configurable: false,
+    enumerable: false,
+    value: 0xFFFFFFFF,
+    writable: false
+});
 
 /**
  *  Bitmask for the address of a bit within a word.
  */
-BitSet.prototype.addressMask = 0x1F;
+Object.defineProperty(BitSet.prototype, 'addressMask', {
+    configurable: false,
+    enumerable: false,
+    value: 0x1F,
+    writable: false
+});
 
 /**
  *  Returns the position of the named bit in the BitSet.

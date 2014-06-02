@@ -1,3 +1,7 @@
+'use strict';
+
+/* globals describe, it, should */
+
 var BitSet = require("../dist/bitset");
 
 describe('An empty BitSet', function() {
@@ -18,6 +22,36 @@ describe('An empty BitSet', function() {
     describe('#bitsPerWord', function() {
         it('should be 32', function() {
             bs.bitsPerWord.should.eql(32);
+        });
+        it('should be read only', function () {
+            (function(){ bs.bitsPerWord = 0; }).should.throw();
+        });
+    });
+
+    describe('#addressBitsPerWord', function() {
+        it('should be 5', function() {
+            bs.addressBitsPerWord.should.eql(5);
+        });
+        it('should be read only', function() {
+            (function(){ bs.addressBitsPerWord = 0;}).should.throw();
+        });
+    });
+
+    describe('#wordMask', function() {
+        it('should be 0xFFFFFFFF', function() {
+            bs.wordMask.should.eql(0xFFFFFFFF);
+        });
+        it('should be read only', function() {
+            (function(){ bs.wordMask = 0; }).should.throw();
+        });
+    });
+
+    describe('#addressMask', function() {
+        it('should be 0x1F', function() {
+            bs.addressMask.should.eql(0x1F);
+        });
+        it('should be read only', function() {
+            (function() { bs.addressMask = 0; }).should.throw();
         });
     });
 
