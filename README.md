@@ -19,8 +19,9 @@ var bs = new BitSet(names, bytes);
 ```
 
 - **names** is an optional object mapping names to bit indicies.
-- **bytes** is an optional array of bytes (in big-endian order) specifying the
-	initial contents of the BitSet.
+- **bytes** is an optional array of 32-bit integers (words) specifying the
+	initial contents of the BitSet. The least significant word should be
+	at index 0.
 
 ### Factory
 
